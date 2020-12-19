@@ -3,16 +3,18 @@ import 'package:provider/provider.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:hive/hive.dart';
 
-import 'providers/ThemesChanger.dart';
+import './providers/ThemesChanger.dart';
 import './providers/Countries.dart';
 import './providers/Continents.dart';
 import './providers/Bookmarks.dart';
+import './providers/Settings.dart';
 
 import './screens/country_details_screen.dart';
 import './screens/country_list_screen.dart';
 import './screens/error_screen.dart';
+import './screens/settings_screen.dart';
 
-import './widgets/bottomDrawer.dart';
+import 'screens/bottomDrawer.dart';
 import './widgets/loadingPage.dart';
 
 void main() async {
@@ -29,16 +31,19 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
+          create: (_) => Settings(),
+        ),
+        ChangeNotifierProvider(
           create: (_) => ThemeChanger(),
         ),
-        ChangeNotifierProvider.value(
-          value: Continents(),
+        ChangeNotifierProvider(
+          create: (_) => Continents(),
         ),
-        ChangeNotifierProvider.value(
-          value: Countries(),
+        ChangeNotifierProvider(
+          create: (_) => Countries(),
         ),
-        ChangeNotifierProvider.value(
-          value: Bookmarks(),
+        ChangeNotifierProvider(
+          create: (_) => Bookmarks(),
         ),
       ],
       child: FutureBuilder(
@@ -57,6 +62,7 @@ class MyApp extends StatelessWidget {
                   CountryList.routeName: (ctx) => CountryList(),
                   CountryDetailsScreen.routeName: (ctx) =>
                       CountryDetailsScreen(),
+                  SettingsScreen.routeName: (ctx) => SettingsScreen(),
                 },
               );
             }
