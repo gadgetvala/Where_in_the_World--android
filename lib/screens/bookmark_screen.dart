@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './../providers/ThemesChanger.dart';
 import './../providers/Bookmarks.dart';
 import './../widgets/appbar/flexibleSpaceStyle.dart';
 import '../widgets/country_list_page/country_list_tile.dart';
@@ -9,14 +10,16 @@ class BookmarkScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final allBookmarks = Provider.of<Bookmarks>(context).bookmarks;
+    final themeData =
+        Provider.of<ThemeChanger>(context, listen: false).getTheme;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'Bookmarks',
           style: TextStyle(
-            color: Color(0xff000000),
-            fontWeight: FontWeight.w600,
+            color: themeData['appbarHeading'],
+            fontWeight: themeData['appbarHeadingWeight'],
           ),
         ),
         centerTitle: true,
@@ -28,9 +31,10 @@ class BookmarkScreen extends StatelessWidget {
           ),
         ],
         iconTheme: IconThemeData(
-          color: Colors.black,
+          color: themeData['appbarIconColor'],
         ),
       ),
+      backgroundColor: themeData['canvasColor'],
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -41,6 +45,7 @@ class BookmarkScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
+                  color: themeData['heading'],
                 ),
               ),
             ),
