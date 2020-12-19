@@ -9,9 +9,9 @@ class Bookmarks with ChangeNotifier {
     return [..._bookmarks];
   }
 
-  Map<String, dynamic> countryDetailsByCode(code) {
-    final Map<String, Object> data =
-        _bookmarks.firstWhere((el) => el['alpha3Code'] == code);
+  countryDetailsByCode(code) {
+    final data =
+        _bookmarks.firstWhere((el) => el['alpha3Code'].toString() == code);
 
     return data;
   }
@@ -30,7 +30,7 @@ class Bookmarks with ChangeNotifier {
     return _bookmarks.any((el) => el['alpha3Code'] == code);
   }
 
-  void toggleBookmarks(country) async {
+  Future<void> toggleBookmarks(country) async {
     final database = await Hive.openBox('countryapp');
 
     final existingIndex = _bookmarks
