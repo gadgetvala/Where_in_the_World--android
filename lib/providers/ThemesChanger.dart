@@ -8,7 +8,7 @@ class ThemeChanger with ChangeNotifier {
 
   // Constructor
   ThemeChanger() {
-    _themeData = Themes.darkTheme;
+    _themeData = Themes.lightTheme;
   }
 
   // Getter for getting theme
