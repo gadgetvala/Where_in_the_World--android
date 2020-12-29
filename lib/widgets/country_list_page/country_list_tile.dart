@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
-import '../../screens/country_details_screen.dart';
+import './../../providers/ThemesChanger.dart';
+import './../../screens/country_details_screen.dart';
 
 class CountryListTile extends StatelessWidget {
   final String countryName;
@@ -28,13 +30,20 @@ class CountryListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeData =
+        Provider.of<ThemeChanger>(context, listen: false).getTheme;
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Color(0xffCADAF1),
+        color: themeData['listCardBGColor'],
         borderRadius: BorderRadius.all(
           Radius.circular(5),
+        ),
+        border: Border.all(
+          color: themeData['listCardBorder'],
+          width: 1,
         ),
         boxShadow: [
           BoxShadow(blurRadius: 20, color: Colors.black.withOpacity(0.1))
@@ -42,7 +51,6 @@ class CountryListTile extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () => selectCountry(context),
-        splashColor: Colors.black,
         child: Row(
           children: <Widget>[
             Hero(
@@ -67,6 +75,7 @@ class CountryListTile extends StatelessWidget {
                     countryName,
                     style: TextStyle(
                       fontSize: 20,
+                      color: themeData['listCardHeadingColor'],
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -75,7 +84,7 @@ class CountryListTile extends StatelessWidget {
                     'Population : $population',
                     style: TextStyle(
                       fontSize: 15,
-                      color: Color(0xff5E5E5E),
+                      color: themeData['listCardSubHeadingColor'],
                       fontWeight: FontWeight.w400,
                     ),
                   )

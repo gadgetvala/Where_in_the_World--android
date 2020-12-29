@@ -22,7 +22,7 @@ class Countries with ChangeNotifier {
       final decodedData = json.decode(data.body);
       _country = decodedData;
     } catch (err) {
-      print(err);
+      return err;
     }
     notifyListeners();
   }

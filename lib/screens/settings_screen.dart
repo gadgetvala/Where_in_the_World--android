@@ -44,9 +44,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: Column(
             children: [
               Card(
+                color: themeData['listCardBGColor'],
                 child: ListTile(
-                  title: Text('Interface'),
-                  subtitle: Text('Change color scheme'),
+                  title: Text(
+                    'Interface',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        color: themeData['heading']),
+                  ),
+                  subtitle: Text(
+                    'Change color scheme',
+                    style: TextStyle(
+                      color: themeData['label'],
+                    ),
+                  ),
                   trailing: FlutterSwitch(
                     width: 80.0,
                     height: 50.0,

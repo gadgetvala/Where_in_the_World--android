@@ -24,15 +24,6 @@ class BookmarkScreen extends StatelessWidget {
         ),
         centerTitle: true,
         flexibleSpace: FlexibleSpaceStyle(),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          ),
-        ],
-        iconTheme: IconThemeData(
-          color: themeData['appbarIconColor'],
-        ),
       ),
       backgroundColor: themeData['canvasColor'],
       body: Column(

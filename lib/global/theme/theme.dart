@@ -12,7 +12,7 @@ class Themes {
     'appbarIconColor': Color(0xff000000),
 
     // Bottom Navigation Style
-    'bottomNavBGColor': Color(0xfffffff),
+    'bottomNavBGColor': Color(0xffE4E3E3),
     'bottomNavTextColor': Color(0xff000000),
     'bottomNavActiveTextColor': Color(0xffffffff),
     'bottomNavActiveColor': Colors.grey[800],

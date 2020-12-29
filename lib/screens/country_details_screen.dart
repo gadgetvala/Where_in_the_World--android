@@ -20,25 +20,24 @@ class CountryDetailsScreen extends StatelessWidget {
     final countryName = routeArgs['name'];
     final from = routeArgs['from'];
     var countryData;
+    final themeData =
+        Provider.of<ThemeChanger>(context, listen: false).getTheme;
 
     if (from == 'bookmark') {
-      countryData =
-          Provider.of<Bookmarks>(context).countryDetailsByCode(countryCode);
+      countryData = Provider.of<Bookmarks>(context, listen: false)
+          .countryDetailsByCode(countryCode);
     } else {
-      countryData =
-          Provider.of<Countries>(context).countryDetailsByCode(countryCode);
+      countryData = Provider.of<Countries>(context, listen: false)
+          .countryDetailsByCode(countryCode);
     }
-
-    final datt = Provider.of<ThemeChanger>(context);
-    print(datt.getTheme);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
           countryName,
           style: TextStyle(
-            color: Color(0xff000000),
-            fontWeight: FontWeight.w600,
+            color: themeData['apappbarHeadingpbar'],
+            fontWeight: themeData['appbarHeadingWeight'],
           ),
         ),
         centerTitle: true,
@@ -46,21 +45,29 @@ class CountryDetailsScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(
-              Provider.of<Bookmarks>(context)
-                      .isBookmark(countryData['alpha3Code'])
-                  ? Icons.bookmark
-                  : Icons.bookmark_border,
+              from == 'bookmark'
+                  ? Provider.of<Bookmarks>(context, listen: false)
+                          .isBookmark(countryData['alpha3Code'])
+                      ? Icons.bookmark
+                      : Icons.bookmark_border
+                  : Provider.of<Bookmarks>(context)
+                          .isBookmark(countryData['alpha3Code'])
+                      ? Icons.bookmark
+                      : Icons.bookmark_border,
             ),
-            onPressed: () {
-              Provider.of<Bookmarks>(context, listen: false)
+            onPressed: () async {
+              await Provider.of<Bookmarks>(context, listen: false)
                   .toggleBookmarks(countryData);
+
+              if (from == 'bookmark') Navigator.pop(context);
             },
           ),
         ],
         iconTheme: IconThemeData(
-          color: Colors.black,
+          color: themeData['appbarIconColor'],
         ),
       ),
+      backgroundColor: themeData['canvasColor'],
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,

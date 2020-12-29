@@ -6,7 +6,8 @@ import '../../providers/ThemesChanger.dart';
 class FlexibleSpaceStyle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final themeData = Provider.of<ThemeChanger>(context).getTheme;
+    final themeData =
+        Provider.of<ThemeChanger>(context, listen: false).getTheme;
     return Container(
       decoration: BoxDecoration(
         color: themeData['appbar'],

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import './../../providers/ThemesChanger.dart';
 
 class LabelContainer extends StatelessWidget {
   final String label;
@@ -8,6 +11,9 @@ class LabelContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeData =
+        Provider.of<ThemeChanger>(context, listen: false).getTheme;
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
       child: Row(
@@ -17,7 +23,7 @@ class LabelContainer extends StatelessWidget {
           Text(
             label,
             style: TextStyle(
-              color: Color(0xff797E84),
+              color: themeData['label'],
               fontSize: 20,
             ),
           ),
@@ -25,7 +31,7 @@ class LabelContainer extends StatelessWidget {
           Text(
             value,
             style: TextStyle(
-              color: Color(0xff001732),
+              color: themeData['labelValue'],
               fontSize: 20,
             ),
             maxLines: 2,
