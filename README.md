@@ -1,5 +1,7 @@
 
 [![support](https://img.shields.io/badge/plateform-flutter%7Candroid%20studio-9cf?style=plastic&logo=appveyor)](https://github.com/gadgetvala/Where_in_the_World--android)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/gadgetvala/Where_in_the_World--android/issues)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555)](https://www.linkedin.com/in/gadgetvala/)
 
 # Introduction
 
@@ -8,7 +10,7 @@ is a small, simple and beautiful app, for getting details about countries.
 
 Before we start, you can take a look at the app:
 
-![Output sample](images/.gif)
+![Output sample](images/output.gif)
 
 ## :bulb: Key Features
 
@@ -93,6 +95,7 @@ models | Schemas
 providers | State Management
 screens | Presentation Layer
 widgets | Smaller Widgets
+main.dart | Main App Startup
 
 ## :clap: Done
 Feel free to **file a new issue** with a respective title and description on the the [Where in the Country](https://github.com/gadgetvala/Where_in_the_World--android/issues) repository. If you already found a solution to your problem, **I would love to review your pull request**! 
