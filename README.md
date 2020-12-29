@@ -57,6 +57,9 @@ package | explain
 [http](https://pub.dev/packages/http) | Connectivity
 [provider](https://pub.dev/packages?q=provider) | State Management
 
+## API Used
+``` https://restcountries.eu/ ```
+
 ### Directory Structure
 
 The project directory structure is as follows:
