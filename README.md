@@ -9,7 +9,7 @@
 
 Before we start, you can take a look at the app:
 
-![Output sample](images/output.gif)
+<img src="images/output.gif" width="250" height="550"/>
 
 ## :bulb: Key Features
 
